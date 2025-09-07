@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EduSafe - Student App Prototype</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --accent:#dc143c;
+      --accent-dark:#b01030;
+      --green:#2ea44f;
+      --muted:#6b7280;
+      --shadow: 0 6px 16px rgba(20,20,30,0.12);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body{ margin:0; background:var(--bg); display:flex; justify-content:center; padding:28px;}
+    .phone {
+      width:360px; height:730px; background:#fff;
+      border-radius:28px; box-shadow: 0 18px 40px rgba(10,10,30,0.18);
+      border: 1px solid rgba(0,0,0,0.06); overflow:hidden; display:flex; flex-direction:column;
+    }
+    header{ background:var(--accent); color:#fff; padding:18px 20px; }
+    header h1{ margin:0; font-size:18px; font-weight:700;}
+    header small{ opacity:0.95; font-weight:600 }
+    .content{ padding:16px; flex:1; display:flex; flex-direction:column; gap:12px; }
+    .banner{
+      background:#fff7f6; border-left:4px solid var(--accent); padding:10px 12px; border-radius:8px;
+      font-weight:600; color:var(--accent-dark); box-shadow: var(--shadow);
+    }
+    .map img{
+      width:100%; height:260px; object-fit:cover; border-radius:12px; box-shadow: var(--shadow);
+    }
+    .buttons { display:flex; gap:14px; justify-content:space-between; margin-top:4px; }
+    .btn {
+      flex:1; padding:14px 8px; border-radius:12px; font-weight:700; border:0; cursor:pointer;
+      box-shadow: 0 10px 24px rgba(10,20,30,0.06); font-size:15px;
+    }
+    .btn.safe{ background:var(--green); color:#fff; }
+    .btn.help{ background:var(--accent); color:#fff; }
+    .status {
+      margin-top:10px; padding:10px 12px; background:#fff; border-radius:10px; color:var(--muted); font-weight:600;
+      box-shadow: var(--shadow);
+    }
+    footer.app-footer{
+      padding:12px 18px; border-top:1px dashed rgba(0,0,0,0.03);
+      display:flex; justify-content:space-between; align-items:center; font-weight:600; color:var(--muted);
+    }
+    .small-note { font-size:12px; color:#475569; margin-top:6px; }
+    .pill { 
+      padding:6px 12px; background:#fff; border-radius:999px; 
+      box-shadow:0 6px 14px rgba(0,0,0,0.06); font-weight:700; cursor:pointer; 
+      text-decoration:none; color:#1e3a8a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="phone" role="region" aria-label="Student Disaster App Prototype">
+    <header>
+      <h1>🚨 Disaster Alert</h1>
+      <small>EduSafe • School Drill</small>
+    </header>
+
+    <div class="content">
+      <div class="banner">Earthquake drill active — follow the safe route</div>
+
+      <!-- Map replaced with your image -->
+      <div class="map">
+        <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/000/675/307/datas/original.png" alt="Safe Route Map">
+      </div>
+
+      <div class="buttons">
+        <button class="btn safe" id="btnSafe">✅ I am Safe</button>
+        <button class="btn help" id="btnHelp">❗ Need Help</button>
+      </div>
+
+      <div class="status" id="statusBox">
+        No response yet — tap a button to mark your status.
+      </div>
+
+      <div class="small-note">
+        Quick contacts:  
+        <a href="https://wa.me/911234567890" target="_blank" class="pill">Teacher</a>
+        <a href="tel:100" class="pill">Emergency</a>
+        <a href="mailto:parent@example.com" class="pill">Parent</a>
+      </div>
+    </div>
+
+    <footer class="app-footer">
+      <div>Live Drill • 11:30 AM</div>
+      <div style="color:var(--accent); font-weight:800">Campus Safety</div>
+    </footer>
+  </div>
+
+<script>
+  const statusBox = document.getElementById('statusBox');
+  document.getElementById('btnSafe').addEventListener('click',()=>{
+    statusBox.innerHTML="✅ You are marked SAFE";
+    statusBox.style.background="#e6fbe6"; statusBox.style.color="#166534";
+  });
+  document.getElementById('btnHelp').addEventListener('click',()=>{
+    statusBox.innerHTML="❗ You are marked NEED HELP";
+    statusBox.style.background="#ffe6e6"; statusBox.style.color="#9b1c1c";
+  });
+</script>
+</body>
+</html>
